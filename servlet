@@ -1,0 +1,63 @@
+Jakarta EE Servlets, JSP & MVC Assessment -Max Marks 75 
+7
+th
+ May 2024 -Practical 
+1. Demonstrate the following Operations with MVC, DAO & DAL & Business Logic Layers. 
+Create Online shopping Store screen with all products. Create category wise and price wise search 
+options. All products should have “Add to cart” option to add any item to the cart. While adding item to 
+the cart, ask for pin code, only allow the item to the cart if the item is serviceable (deliverable) to that 
+pin code (refer the table given). User should be able to add multiple items and on check out, it should 
+show the consolidated bill with GST on all products, Shipping Charges, GST on shipping charges. Refer 
+the tables given for gST, and GST on shipping charges. Refer OrderValueWiseShippingCharges table to 
+calculate the shipping charges
+Note: No need to order creation, login, register, payment processing and all. Just we need display 
+products and then update the checkout. 
+Note: Clean code should be written with proper comments. 5 Marks will be given for clean code.
+Note: Your code should not match with others.
+Imp : Along with the code (full project folder), also submit output screenshots of all features in working 
+condition.
+ProductCategories
+This table stores different product categories.
+prct_id int
+prct_title v(100)
+prct_desc v(255)
+HSNCodes
+This table stores all hsn code wise GST
+hsnc_id int AUTO PK
+hsnc_hsncode v(20) Actual HSN Code
+hsnc_gstc_percentage numeric
+Products
+This table stores various product info
+Prod_id int AUTO
+prod_title v(100)
+prod_prct_id int FK
+prod_hsnc_id int FK
+www.nkxgen.com Corporate Training –Jan 2024
+prod_brand v(100)
+prod_image image
+ProductStock
+This table stores the Live stock available.
+prod_id int
+prod_batchno v(20)
+prod_price numeric
+prod_stock int //qty available
+prod_mrp numeric
+OrderValueWiseShippingCharges
+This table stores Order Value wise shipping charges. GST to be calculated on shipping charegs. First 
+distribute the order shipping charges to all the products in that order on prorata basis, then apply the 
+respective gst of that product on shipping too. Finally consolidate all the individual shipping charges 
+along with GST to arrive full shipping charges wity GST.
+orvl_id int PK
+orvl_from numeric 0
+orvl_to numeric 2000
+orvl_shippingamount numeric 100
+ServiceableRegions
+This table stores all serviceable regions with the respective covering pincodes
+srrg_id int
+srrg_name v(100)
+srrg_pinfrom int(6)
+srrg_pinto int(6)
+ProductCategoryWiseServiceableRegions
+This table stores different product catagory wise serviceable regions.
+prct_id int
+srrg_id int CPk(1,2
